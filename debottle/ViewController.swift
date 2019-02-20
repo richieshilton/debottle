@@ -55,7 +55,7 @@ class ViewController: UIViewController {
             .disposed(by: bag)
         
         throttleButton.rx.tap.asObservable()
-            .throttle(interval, scheduler: MainScheduler.instance)
+            .throttle(interval, latest: false, scheduler: MainScheduler.instance)
             .do(onNext: { (_) in
                 print("throttleButton tapped")
                 self.throttleTapped()
